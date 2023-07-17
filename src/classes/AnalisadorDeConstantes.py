@@ -1,12 +1,12 @@
 import sqlite3
 from skopt import gp_minimize
 
-from SistemaFisico import Misturador
-from GeradorDeDisturbios import GeradorDeDisturbios
+from classes.SistemaFisico import Misturador
+from classes.GeradorDeDisturbios import GeradorDeDisturbios
 
 class AnalisadorDeConstantes:
     def __init__(self,
-                 sistema_fisico: Misturador,
+                 sistema_fisico,
                  Rmax: float,
                  tsample_inicial: float,
                  disturbio: GeradorDeDisturbios):

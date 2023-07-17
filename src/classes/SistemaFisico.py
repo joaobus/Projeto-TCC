@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from GeradorDeDisturbios import GeradorDeDisturbios
+from classes.GeradorDeDisturbios import GeradorDeDisturbios
 from params import obter_parametros
 
 class Misturador:
