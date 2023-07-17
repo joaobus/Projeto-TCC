@@ -3,8 +3,14 @@ from GeradorDeDisturbios import GeradorDeDisturbios
 from params import obter_parametros
 
 class Misturador:
-    def __init__(self) -> None:
-        entradas,saidas,dimensoes,setpoints,var_erro_zero,constantes_controlador = obter_parametros()
+    entradas,saidas,dimensoes,setpoints,var_erro_zero,constantes_controlador = obter_parametros()
+    def __init__(self,
+                 entradas=entradas,
+                 saidas=saidas,
+                 dimensoes=dimensoes,
+                 setpoints=setpoints,
+                 var_erro_zero=var_erro_zero,
+                 constantes_controlador=constantes_controlador) -> None:
         self.entradas = entradas
         self.saidas = saidas
         self.dimensoes = dimensoes
@@ -199,8 +205,26 @@ class Misturador:
         plt.show()
     
     def score(self):
+        assert hasattr(self,'vetores_erro')
         [erro2VV,erro2CV] = self.vetores_erro
         return (sum(erro2VV) + sum(erro2CV))/2
+    
+    def estado_estacionario(self):
+
+        [Vset,Caset] = self.setpoints
+        [F0,Fa0,Ca0] = self.entradas
+
+        nulo = GeradorDeDisturbios(Vset).sinal_nulo()
+        self.simular(nulo)
+
+        [tempoV,VV,FV,F0V,CaV,Fa0V] = self.vetores_para_plotagem
+
+        self.entradas = [F0V[-1],Fa0V[-1],Ca0]
+        self.saidas = [FV[-1],CaV[-1]]
+        self.dimensoes = [VV[-1]]
+        self.var_erro_zero = [FV[-1],F0V[-1]]
+
+        return self
 
 
 
