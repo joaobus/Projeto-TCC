@@ -1,8 +1,6 @@
 import sqlite3
 from skopt import gp_minimize
 
-#comment
-
 from classes.SistemaFisico import Misturador
 from classes.GeradorDeDisturbios import GeradorDeDisturbios
 
