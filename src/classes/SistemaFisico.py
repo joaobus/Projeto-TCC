@@ -103,6 +103,7 @@ class Misturador:
             
             # Distúrbio
             Fa0 = disturbio.dist(tempo)
+            # Ca0 = disturbio.dist(tempo)
 
             tsampleF=adaptar_sample(abs(F-Fant)/dt)
             tsampleF0=adaptar_sample(abs(F0-F0ant)/dt)
@@ -204,7 +205,7 @@ class Misturador:
 
         plt.show()
     
-    def score(self):
+    def erro(self):
         assert hasattr(self,'vetores_erro')
         [erro2VV,erro2CV] = self.vetores_erro
         return (sum(erro2VV) + sum(erro2CV))/2

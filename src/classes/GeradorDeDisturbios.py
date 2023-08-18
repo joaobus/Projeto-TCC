@@ -1,8 +1,10 @@
 import numpy as np
+from params import obter_parametros
 
 class GeradorDeDisturbios:
-    def __init__(self,varset):
-        self.varset = varset
+    def __init__(self):
+        entradas,_,_,_,_,_ = obter_parametros()
+        self.varset = entradas[1]
 
     def degrau(self,intensidade,inicio=0):
         self.tipo = "degrau"
