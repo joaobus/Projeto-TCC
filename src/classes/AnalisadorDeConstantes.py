@@ -22,7 +22,7 @@ class AnalisadorDeConstantes:
             self.sistema_fisico.simular(Rmax=self.rmax,
                                               tsample_inicial=self.tsample_inicial,
                                               disturbio=self.disturbio)
-            return self.sistema_fisico.score()
+            return self.sistema_fisico.erro()
 
         # Define os limites para os parâmetros Kc, Ti e Td para cada controlador
         pid1_range = [(-50, -0.01),(0.01, 5),(0, 0.01)]
