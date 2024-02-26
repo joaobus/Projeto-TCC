@@ -30,7 +30,7 @@ class AnalisadorDeConstantes:
 
         dims = pid1_range + pid2_range
 
-        resultado = gp_minimize(erro,dims,n_calls=30)
+        resultado = gp_minimize(erro,dims,n_calls=70)
         self.melhores_constantes = resultado.x            # type:ignore
         return self
 
@@ -50,7 +50,7 @@ class AnalisadorDeConstantes:
 
         cur.execute(""" SELECT Erro FROM IndIntConst WHERE tipo_do_disturbio = ? AND Intensidade_do_disturbio = ?""",(self.disturbio.tipo, self.disturbio.intensidade))
         erro_atual = cur.fetchone()
-        print(erro_atual)
+        print(erro)
 
         if erro_atual is None: 
             # Inserindo os valores
